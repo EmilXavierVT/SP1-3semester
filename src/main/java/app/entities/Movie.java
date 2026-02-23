@@ -27,5 +27,5 @@ public class Movie {
 
     private Set<Director> director;
 
-    private Set<Actor> actor );
+    private Set<Actor> actor;
 }
