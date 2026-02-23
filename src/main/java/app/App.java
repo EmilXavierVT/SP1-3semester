@@ -9,6 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class App {
     public static void initiate()
     {
+    MovieService movieService = new MovieService();
+    movieService.getDanishMovies();
 
     }
 }
