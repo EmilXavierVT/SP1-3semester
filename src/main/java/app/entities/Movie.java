@@ -20,7 +20,8 @@ public class Movie {
     @JsonProperty("release_date")
     private String releaseDate;
 
-    @JsonProperty("pro")
+    @JsonProperty("vote_average")
+    private double rating;
 
     private Set<Genre> genre = new HashSet<>();
 
