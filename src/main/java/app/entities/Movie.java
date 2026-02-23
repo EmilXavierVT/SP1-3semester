@@ -23,9 +23,9 @@ public class Movie {
     @JsonProperty("vote_average")
     private double rating;
 
-    private Set<Genre> genre = new HashSet<>();
+    private Set<Genre> genre;
 
-    private Set<Director> director = new HashSet<>();
-    
-    private Set<Actor> actor = new HashSet<>();
+    private Set<Director> director;
+
+    private Set<Actor> actor );
 }
