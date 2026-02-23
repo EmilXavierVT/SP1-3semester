@@ -4,6 +4,7 @@ import app.dto.MovieDTO;
 import app.utils.ApiFetcher;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityManagerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +13,25 @@ public class MovieService {
     ObjectMapper maper = ObjectMapperService.getMapper();
     String url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=da-DK&page=*&primary_release_year=$&sort_by=popularity.desc&with_origin_country=DK&api_key=$1";
     String apiKey = "82069456ff0f378d0ddb400bc8419f80";
+    String singleUrl = "https://api.themoviedb.org/3/search/movie?query=bastarden&include_adult=false&language=en-US&page=1";
 
-    public List<MovieDTO> getDanishMovies(){
+    public MovieService(EntityManagerFactory emf) {
+    }
+
+    public MovieDTO getMovie() {
+        JsonNode response = ApiFetcher.getApiDataWithMapper(singleUrl, new ObjectMapper());
+
+        return null;
+    }
+
+    public List<MovieDTO> getDanishMovies() {
         List<MovieDTO> movies = null;
-        url = url.replace("$1",apiKey);
+        url = url.replace("$1", apiKey);
         int page = 1;
         int maxPage = 1;
         int totalResult = 0;
         List<String> ids = new ArrayList<>();
-        String[] years = {"2021","2022","2023","2024","2025","2026"};
+        String[] years = {"2021", "2022", "2023", "2024", "2025", "2026"};
         for (int i = 0; i < years.length; i++) {
             url = url.replace("$", (years[i]));
             for (int p = 0; p <= maxPage; p++) {
@@ -38,8 +49,7 @@ public class MovieService {
         System.out.println(totalResult);
 
 
-
-
         return movies;
     }
+
 }
